@@ -1,0 +1,52 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@section Styles{ 
+    <style>
+        h1{
+            background-color :greenyellow;
+        }
+        table, th, td {
+            border-collapse: collapse;
+            border: red 2px solid;
+            padding: 16px;
+            font-size: 20px;
+            align-self:center;
+        }
+    </style>
+}
+<div class="text-center">
+    <input type="button" id="btnClick" value="Click"/>
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+@section Scripts{ 
+<script>
+    const btn = document.querySelector("#btnClick");
+    const myH = document.querySelector(".display-4");
+    btn.addEventListener("click", () => {
+    myH.textContent = "Welcome MVC";
+    })
+    var emps = [{ "name": "Tom", "workYears": 3, "salary": 35000 },
+    { "name": "Jack", "workYears": 5, "salary": 40000 },
+    { "name": "Mary", "workYears": 7, "salary": 45000 }];
+
+    document.write("<table align='center'>");
+    document.write("<tr><th>name</th><th>workYears</th><th>salary</th><tr>");
+
+    for (let i = 0, max = emps.length; i < max; i++) {
+        document.write("<tr><td>");
+        document.write(`${emps[i].name} `);
+        document.write("</td>");
+        document.write("<td>");
+        document.write(`${emps[i].workYears}`);
+        document.write("</td>");
+        document.write("<td>");
+        document.write(` ${emps[i].salary}`);
+        document.write("</td></tr>");
+    }
+
+    document.write("</table>");
+</script>
+    
+}
