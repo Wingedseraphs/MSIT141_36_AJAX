@@ -33,7 +33,11 @@ namespace prjAjax.Controllers
 
         public IActionResult Register(Member member)
         {
-            
+            return View();
+        }
+
+        public IActionResult Address()
+        {
             return View();
         }
 
