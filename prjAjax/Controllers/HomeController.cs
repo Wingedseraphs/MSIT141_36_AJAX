@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using prjAjax.Models;
 using System;
@@ -11,11 +12,13 @@ namespace prjAjax.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        private readonly DemoContext _conetext;
+        private readonly IWebHostEnvironment _host;
+        public HomeController(DemoContext conetext, IWebHostEnvironment hostEnvironment)
         {
-            _logger = logger;
+            _conetext = conetext;
+            _host = hostEnvironment;
         }
 
         public IActionResult Index()
@@ -26,6 +29,18 @@ namespace prjAjax.Controllers
         public IActionResult Privacy()
         {
             return View();
+        }
+
+        public IActionResult Register(Member member)
+        {
+            
+            return View();
+        }
+
+        public IActionResult CheckAccount(string name)
+        {
+            var exists = _conetext.Members.Any(m => m.Name == name);
+            return Content(exists.ToString(), "text/plain");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
